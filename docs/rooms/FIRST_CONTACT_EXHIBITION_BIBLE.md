@@ -1,6 +1,6 @@
 # FIRST CONTACT — EXHIBITION ROOM BIBLE
 
-Status: **LOCKED FOR IMPLEMENTATION**
+Status: **CLOSED / VISUALLY + TECHNICALLY ACCEPTED**
 Date: 2026-09-23
 
 Source work:
@@ -362,3 +362,48 @@ Room is not closed until:
 - real browser capture is reviewed.
 
 FIRST_CONTACT_BIBLE = LOCKED
+
+
+---
+
+## 13. CLOSURE RECORD — 2026-09-23
+
+Accepted implementation head:
+`d00b056b763e1e53603207280468d7405de84c9b`
+
+Technical gate:
+- Exhibition CI run `35828953951` — SUCCESS
+- lint — PASS
+- typecheck — PASS
+- production build — PASS
+
+Browser / visual gate:
+- First Contact Visual QA run `35828953953` — SUCCESS
+- artifact `10736242238`
+- desktop sequence captured through object, gap, angle, signal, third thing, context and handoff
+- mobile object + warm third-thing states captured
+- reduced-motion state captured
+- no horizontal-overflow flags
+- no console errors
+- no page errors
+- CONTEXT and INDEX verified
+- final route handoff verified at `/seraph`
+
+Rendered review:
+- object state reads physical before digital;
+- GAP gained asymmetric architectural mass rather than blank card geometry;
+- typography was reduced so the world carries more visual weight;
+- ANGLE remains readable before and after reinterpretation;
+- SIGNAL has visible stalled transmission before one sustained signal crosses;
+- THIRD THING changes the field from cold to warm without closing the distance between nodes;
+- mobile preserves the same thesis without hover;
+- context layer is visually subordinate and no longer conflicts with global shell controls.
+
+Known intentional restraint:
+- the exhibition cut does not reproduce the original neighbour reveal;
+- it does not score the visitor;
+- it does not complete the relation to 100%;
+- it ends as an incomplete warm seam and hands off to SERAPH.
+
+FIRST_CONTACT_ROOM = CLOSED
+NEXT_ROOM = SERAPH
