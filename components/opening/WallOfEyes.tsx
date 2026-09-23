@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import {
   useCallback,
+  useEffect,
   useRef,
   useState,
   useSyncExternalStore,
@@ -316,6 +317,10 @@ export default function WallOfEyes() {
   );
   const { enterWithSound, enterInSilence } = useExhibition();
   const [entering, setEntering] = useState<"sound" | "silence" | null>(null);
+
+  useEffect(() => () => {
+    if (timerRef.current !== null) window.clearTimeout(timerRef.current);
+  }, []);
 
   const centerEyes = useCallback(() => {
     const wall = wallRef.current;
