@@ -453,14 +453,20 @@ export default function SeraraCanonicalBody() {
       if (canWake()) void sonic.wake();
     };
 
+    const externalMute = () => {
+      sonic.dispose();
+    };
+
     window.addEventListener("pointerdown", unlock);
     window.addEventListener("keydown", unlock);
     window.addEventListener("omar:exhibition-sound-on", externalWake);
+    window.addEventListener("omar:exhibition-sound-off", externalMute);
 
     return () => {
       window.removeEventListener("pointerdown", unlock);
       window.removeEventListener("keydown", unlock);
       window.removeEventListener("omar:exhibition-sound-on", externalWake);
+      window.removeEventListener("omar:exhibition-sound-off", externalMute);
       sonic.dispose();
     };
   }, [sonic]);
