@@ -91,7 +91,7 @@
   max-width: 11ch;
   margin: 0;
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(3.4rem, 8.5vw, 8.5rem);
+  font-size: clamp(3.25rem, 7vw, 7rem);
   font-style: italic;
   font-weight: 400;
   line-height: .83;
@@ -101,6 +101,31 @@
 .whisper {
   margin: 1rem 0 0;
   color: var(--fc-muted);
+}
+
+.phase_object .narrative h1 {
+  max-width: 8ch;
+  font-size: clamp(3.2rem, 6.4vw, 6.5rem);
+}
+
+.phase_gap .narrative h1 {
+  max-width: 8ch;
+}
+
+.phase_angle .narrative h1 {
+  max-width: 10ch;
+  font-size: clamp(3rem, 6.1vw, 6.15rem);
+}
+
+.phase_signal .narrative h1 {
+  max-width: 9ch;
+  font-size: clamp(3.1rem, 6.35vw, 6.4rem);
+}
+
+.phase_third .narrative h1,
+.phase_residue .narrative h1 {
+  max-width: 8.5ch;
+  font-size: clamp(3rem, 5.9vw, 6rem);
 }
 
 .interaction {
@@ -260,7 +285,7 @@
 
   .narrative h1 {
     max-width: 9ch;
-    font-size: clamp(3.1rem, 15vw, 5.8rem);
+    font-size: clamp(2.9rem, 13.5vw, 5.25rem);
   }
 
   .interaction {
