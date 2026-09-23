@@ -84,9 +84,10 @@ export default function SeraphCanonicalFragment() {
         arriving ? styles.arriving : "",
         leaving ? styles.leaving : "",
       ].filter(Boolean).join(" ")}
-      data-seraph-fragment
     >
-      <SeraphExperience />
+      <div className={styles.source} data-seraph-source>
+        <SeraphExperience />
+      </div>
 
       <div className={styles.sourceMask} aria-hidden="true" />
 
