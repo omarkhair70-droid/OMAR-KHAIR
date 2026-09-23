@@ -775,18 +775,24 @@ export default function SeraraPerceptionSensor() {
       }
     };
 
-    const start = () => {
+    const start = (event: Event) => {
+      if (
+        event.type === "pointerdown" &&
+        event.target instanceof Element &&
+        !event.target.closest("[data-seraph-fragment]")
+      ) {
+        return;
+      }
+
       window.removeEventListener("pointerdown", start, true);
       window.removeEventListener("keydown", start, true);
       void activate();
     };
 
     window.addEventListener("pointerdown", start, {
-      once: true,
       capture: true,
     });
     window.addEventListener("keydown", start, {
-      once: true,
       capture: true,
     });
 
