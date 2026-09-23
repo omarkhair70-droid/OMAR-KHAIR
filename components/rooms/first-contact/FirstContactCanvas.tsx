@@ -114,10 +114,18 @@ function ObjectArtifact({ reducedMotion }: { reducedMotion: boolean }) {
 function GapWorld() {
   return (
     <group>
-      <Block position={[-1.43, -0.18, 0]} scale={[1.62, 1.14, 0.8]} rotation={[0, 0.08, 0]} color="#dfd7cb" />
-      <Block position={[1.43, -0.18, 0]} scale={[1.62, 1.14, 0.8]} rotation={[0, -0.08, 0]} />
-      <Node x={-1.16} />
-      <Node x={1.16} />
+      <group position={[-1.48, -0.16, 0]} rotation={[0.02, 0.09, -0.035]}>
+        <Block position={[0, 0, 0]} scale={[1.46, 0.94, 0.7]} color="#ded6ca" />
+        <Block position={[-0.38, 0.48, -0.12]} scale={[0.72, 0.22, 0.48]} color="#ebe4da" />
+        <Block position={[0.56, -0.36, 0.08]} scale={[0.24, 0.44, 0.54]} color="#d1c7bb" />
+      </group>
+      <group position={[1.46, -0.12, 0]} rotation={[-0.015, -0.08, 0.026]}>
+        <Block position={[0, 0, 0]} scale={[1.42, 0.98, 0.72]} color={porcelain} />
+        <Block position={[0.44, 0.45, -0.1]} scale={[0.62, 0.2, 0.46]} color="#e8e0d5" />
+        <Block position={[-0.55, -0.34, 0.1]} scale={[0.22, 0.42, 0.5]} color="#ddd4c9" />
+      </group>
+      <Node x={-0.92} />
+      <Node x={0.92} />
     </group>
   );
 }
@@ -316,18 +324,33 @@ function World(props: WorldProps) {
   const root = useRef<THREE.Group>(null);
   const viewportWidth = useThree((state) => state.viewport.width);
   const narrow = viewportWidth < 3.5;
+  const desktopX = props.phase === "object"
+    ? 0.55
+    : props.phase === "gap"
+      ? 0.38
+      : props.phase === "angle"
+        ? 0.72
+        : props.phase === "signal"
+          ? 0.58
+          : props.phase === "third"
+            ? 0.52
+            : 0.34;
 
   useFrame((state, delta) => {
     if (!root.current) return;
 
+    root.current.position.x = props.reducedMotion
+      ? (narrow ? 0 : desktopX)
+      : damp(root.current.position.x, narrow ? 0 : desktopX, 2.7, delta);
+
     if (!props.reducedMotion) {
-      root.current.rotation.y = damp(root.current.rotation.y, state.pointer.x * (narrow ? 0.018 : 0.045), 3.2, delta);
-      root.current.rotation.x = damp(root.current.rotation.x, -state.pointer.y * (narrow ? 0.008 : 0.018), 3.2, delta);
+      root.current.rotation.y = damp(root.current.rotation.y, state.pointer.x * (narrow ? 0.014 : 0.034), 3.2, delta);
+      root.current.rotation.x = damp(root.current.rotation.x, -state.pointer.y * (narrow ? 0.006 : 0.014), 3.2, delta);
     }
   });
 
   return (
-    <group ref={root} scale={narrow ? 0.66 : 1} position={[0, narrow ? 0.18 : -0.05, 0]}>
+    <group ref={root} scale={narrow ? 0.66 : 1} position={[narrow ? 0 : desktopX, narrow ? 0.18 : -0.05, 0]}>
       {props.phase === "object" ? <ObjectArtifact reducedMotion={props.reducedMotion} /> : null}
       {props.phase === "gap" ? <GapWorld /> : null}
       {props.phase === "angle" ? <AngleWorld aligned={props.aligned} reducedMotion={props.reducedMotion} /> : null}
