@@ -98,7 +98,7 @@ try {
     });
 
     await page.getByRole("button", { name: "CONTEXT" }).click();
-    report.desktop.contextPanel = await page.getByRole("heading", { name: "THE FORM REMEMBERS" }).isVisible();
+    report.desktop.contextPanel = await page.getByRole("heading", { name: "THE FORM REMEMBERS", exact: true }).isVisible();
 
     await page.screenshot({
       path: path.join(outDir, "desktop-02-context.png"),
