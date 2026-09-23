@@ -441,7 +441,7 @@ export default function SeraraCanonicalBody() {
 
     const insideFragment = (target: EventTarget | null) =>
       target instanceof Element &&
-      Boolean(target.closest("[data-seraph-fragment]"));
+      Boolean(target.closest("[data-seraph-source]"));
 
     const unlock = (event: Event) => {
       if (!canWake()) return;
