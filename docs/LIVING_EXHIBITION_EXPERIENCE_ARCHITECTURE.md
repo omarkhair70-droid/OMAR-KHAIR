@@ -14,6 +14,8 @@ It defines the new exhibition that will later become a new project inside Omar's
 
 ---
 
+> Canonical-work correction: selected projects are not remade inside the exhibition. The source-first reuse law is defined in `docs/EXHIBITION_CANONICAL_WORK_LAW.md` and overrides any older wording that implies rebuilding a source project.
+
 # 0. THESIS
 
 The exhibition is not a website that contains art.
@@ -97,7 +99,7 @@ It is a material / emotional progression.
 
 ## ENTRANCE
 No project yet.
-The visitor enters Omar's authored field.
+The visitor enters Omar's authored field through **WALL OF EYES**: an exhibition-owned broadcast / CRT threshold in which the field appears to notice the visitor before the first source work begins.
 
 ## FIRST CONTACT
 The exhibition begins by establishing the visitor as a participant.
@@ -175,6 +177,11 @@ No:
 - giant "creative technologist" label.
 
 The entrance is a threshold.
+
+The locked visual opening is defined in:
+`docs/opening/WALL_OF_EYES_OPENING_BIBLE.md`
+
+The wall is not a project preview grid and does not use third-party film footage. It is an original procedural witness field.
 
 ### Required information
 
