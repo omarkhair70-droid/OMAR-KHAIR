@@ -1,12 +1,12 @@
-import type { Product } from "@/lib/products";
+import type { Product } from "@/lib/source/fokhara/products";
 import {
   materialStateCssVars,
   materialStateForCollection
-} from "@/lib/visual/material-state";
+} from "@/lib/source/fokhara/visual/material-state";
 import {
   productImageChoreography,
   type ProductVisualRole
-} from "@/lib/visual/image-choreography";
+} from "@/lib/source/fokhara/visual/image-choreography";
 
 type ProductVisualProps = {
   product: Product;
