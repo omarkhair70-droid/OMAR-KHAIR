@@ -48,24 +48,30 @@ export function ExhibitionProvider({ children }: { children: ReactNode }) {
   const hydratedRef = useRef(false);
 
   useEffect(() => {
+    let frame = 0;
+
     try {
       const saved = window.sessionStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved) as Partial<ExhibitionSession>;
-        setSession({
-          soundMode: parsed.soundMode ?? "undecided",
-          visitedRooms: Array.isArray(parsed.visitedRooms) ? parsed.visitedRooms : [],
-          roomOrder: Array.isArray(parsed.roomOrder) ? parsed.roomOrder : [],
-          roomResidues: parsed.roomResidues ?? {}
+        frame = window.requestAnimationFrame(() => {
+          setSession({
+            soundMode: parsed.soundMode ?? "undecided",
+            visitedRooms: Array.isArray(parsed.visitedRooms) ? parsed.visitedRooms : [],
+            roomOrder: Array.isArray(parsed.roomOrder) ? parsed.roomOrder : [],
+            roomResidues: parsed.roomResidues ?? {}
+          });
+          hydratedRef.current = true;
         });
+      } else {
+        hydratedRef.current = true;
       }
     } catch {
-      // Session continuity is optional. The exhibition remains complete without storage.
-    } finally {
       hydratedRef.current = true;
     }
 
     return () => {
+      if (frame) window.cancelAnimationFrame(frame);
       void audioRef.current?.close();
       audioRef.current = null;
     };
