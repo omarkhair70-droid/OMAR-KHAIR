@@ -7,12 +7,12 @@ Source repository:
 `omarkhair70-droid/seraph`
 
 Canonical source snapshot reviewed:
-`main @ e49d37c0d7567f0bf780f033aa5f7311d290bc96`
+`main @ 96ded3ad61cddf0636e05f7f427147cfdeba4798`
 
-Active experimental branch reviewed separately:
-`lab/serara-interactive-presence-20260923`
+Canonical closure reviewed:
+`docs/SERARA_THE_BODY_FINAL_CLOSURE_2026-09-23.md`
 
-Latest lab work is useful R&D, but it is **not** the source of truth for the exhibition until SERAPH itself accepts / merges those experiments.
+SERAPH main now includes the accepted living-presence merge. The earlier lab line is no longer treated as separate unaccepted R&D for V1; the accepted interaction architecture is part of the canonical source snapshot.
 
 ---
 
@@ -37,12 +37,17 @@ What enters the exhibition:
 
 What does not enter automatically:
 - WAKING RELIC;
-- lab-only camera-perception experiments;
-- lab-only diagnostic UI;
+- diagnostic UI;
 - proof telemetry;
-- debug states;
 - synthetic proof routes;
 - every voice / narrative chapter simply because it exists in SERAPH.
+
+Canonical THE BODY interaction that **is** now accepted includes:
+- attention memory;
+- semantic camera perception;
+- embodied performance conductor;
+- camera embodied readability;
+- pointer fallback when camera is unavailable / denied.
 
 The exhibition presents **THE BODY itself**, not a summary and not a remake.
 
@@ -118,23 +123,18 @@ The adapter must not redesign:
 
 ---
 
-# 4. LAB BRANCH RULE
+# 4. CANONICAL FREEZE RULE
 
-The current SERARA lab branch contains valuable experiments:
-- delayed recognition;
-- stillness memory;
-- semantic camera perception;
-- embodied performance conductor;
-- stronger camera-response readability.
+SERAPH / THE BODY is now **ACCEPTED / FROZEN CURRENT ITERATION** on the reviewed main snapshot.
 
-Those experiments remain **SERAPH R&D**.
+The exhibition pins that accepted snapshot.
 
-The exhibition must not silently adopt them before SERAPH itself declares them canonical.
+Future SERAPH experiments do not flow into the exhibition automatically.
 
-If SERAPH later merges an accepted experiment:
+If SERAPH later accepts a new iteration:
 1. record the new canonical source commit;
-2. compare the exhibition fragment against it;
-3. deliberately update the pinned fragment if useful.
+2. compare against the pinned exhibition fragment;
+3. update only through an explicit exhibition source-refresh decision.
 
 No accidental drift.
 
@@ -221,14 +221,16 @@ This is an integration adaptation, not an artistic redesign.
 
 # 9. CAMERA / PERCEPTION
 
-V1 exhibition fragment does **not** request webcam permission.
+Semantic camera perception is now part of canonical THE BODY.
 
-Reason:
-- webcam perception is still active experimental R&D in the lab branch;
-- the canonical fragment already works with pointer / presence logic;
-- the exhibition should not create a permission event SERAPH itself has not canonically accepted.
+V1 preserves the source behaviour:
+- camera is a sensory organ;
+- no camera image is displayed;
+- semantic signals are interpreted before response;
+- pointer remains fallback if camera access is denied / unavailable;
+- no biometric identity or persistent face profile is created.
 
-When / if SERAPH merges camera perception canonically, the exhibition can revisit this boundary.
+The exhibition does not invent additional camera behaviour.
 
 ---
 
@@ -238,7 +240,7 @@ SERAPH exhibition integration closes only when:
 
 - the exact canonical body asset is pinned from the recorded source commit;
 - the chamber uses source-owned runtime code, not a visual imitation;
-- no lab-only code leaks into V1;
+- no diagnostic / proof-only code leaks into the visible V1 experience;
 - sound OFF remains truly silent;
 - source code is disposed cleanly when leaving the room;
 - desktop still frame matches the source identity;
@@ -251,5 +253,5 @@ SERAPH exhibition integration closes only when:
 - rendered browser proof is reviewed.
 
 SERAPH_FRAGMENT = THE_BODY_CANONICAL_CHAMBER
-SOURCE_SHA = e49d37c0d7567f0bf780f033aa5f7311d290bc96
+SOURCE_SHA = 96ded3ad61cddf0636e05f7f427147cfdeba4798
 NEXT = PIN_SOURCE_RUNTIME
