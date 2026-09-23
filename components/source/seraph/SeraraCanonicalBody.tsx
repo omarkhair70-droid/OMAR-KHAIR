@@ -436,16 +436,31 @@ export default function SeraraCanonicalBody() {
   const fitted = useMemo(() => buildCanonicalRuntime(scene), [scene]);
 
   useEffect(() => {
-    const unlock = () => {
+    const canWake = () =>
+      document.documentElement.dataset.exhibitionSound === "on";
+
+    const insideFragment = (target: EventTarget | null) =>
+      target instanceof Element &&
+      Boolean(target.closest("[data-seraph-fragment]"));
+
+    const unlock = (event: Event) => {
+      if (!canWake()) return;
+      if (event.type === "pointerdown" && !insideFragment(event.target)) return;
       void sonic.wake();
     };
 
-    window.addEventListener("pointerdown", unlock, { once: true });
-    window.addEventListener("keydown", unlock, { once: true });
+    const externalWake = () => {
+      if (canWake()) void sonic.wake();
+    };
+
+    window.addEventListener("pointerdown", unlock);
+    window.addEventListener("keydown", unlock);
+    window.addEventListener("omar:exhibition-sound-on", externalWake);
 
     return () => {
       window.removeEventListener("pointerdown", unlock);
       window.removeEventListener("keydown", unlock);
+      window.removeEventListener("omar:exhibition-sound-on", externalWake);
       sonic.dispose();
     };
   }, [sonic]);
