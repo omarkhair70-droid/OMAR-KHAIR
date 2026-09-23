@@ -1,0 +1,103 @@
+name: Pin Fokhara Canonical Source
+
+on:
+  push:
+    branches:
+      - exhibition/fokhara-canonical-fragment-20260923
+    paths:
+      - ".github/workflows/pin-fokhara-source.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  pin-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout exhibition branch
+        uses: actions/checkout@v4
+        with:
+          ref: exhibition/fokhara-canonical-fragment-20260923
+          fetch-depth: 0
+
+      - name: Checkout canonical Fokhara snapshot
+        uses: actions/checkout@v4
+        with:
+          repository: omarkhair70-droid/Fokhara
+          ref: f66bbd8c85bb6c4129e7e348ee6124cc56b6c665
+          path: _source-fokhara
+
+      - name: Pin canonical fragment source
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p components/source/fokhara
+          mkdir -p lib/source/fokhara/visual
+          mkdir -p docs/source/fokhara
+          mkdir -p docs/provenance
+
+          cp _source-fokhara/components/HomeObjectEntry.tsx components/source/fokhara/HomeObjectEntry.tsx
+          cp _source-fokhara/components/ProductVisual.tsx components/source/fokhara/ProductVisual.tsx
+          cp _source-fokhara/lib/products.ts lib/source/fokhara/products.ts
+          cp _source-fokhara/lib/visual/material-state.ts lib/source/fokhara/visual/material-state.ts
+          cp _source-fokhara/lib/visual/image-choreography.ts lib/source/fokhara/visual/image-choreography.ts
+          cp _source-fokhara/app/globals.css docs/source/fokhara/globals.snapshot.css
+          cp _source-fokhara/docs/visual/VP0_PRODUCT_MEDIA_SNAPSHOT.json docs/source/fokhara/VP0_PRODUCT_MEDIA_SNAPSHOT.json
+          cp _source-fokhara/docs/visual/VP10_FINAL_VISUAL_ACCEPTANCE.md docs/source/fokhara/VP10_FINAL_VISUAL_ACCEPTANCE.md
+
+          cat > docs/provenance/fokhara.md <<'EOF'
+          # FOKHARA — EXHIBITION SOURCE PROVENANCE
+
+          Canonical repository:
+          `omarkhair70-droid/Fokhara`
+
+          Canonical snapshot:
+          `f66bbd8c85bb6c4129e7e348ee6124cc56b6c665`
+
+          Accepted production gate:
+          `VP10 — FINAL VISUAL ACCEPTANCE`
+
+          Exhibition fragment:
+          `HOME — OBJECT-FIRST THESIS`
+
+          Pinned source:
+          - `components/HomeObjectEntry.tsx`
+          - `components/ProductVisual.tsx`
+          - `lib/products.ts`
+          - `lib/visual/material-state.ts`
+          - `lib/visual/image-choreography.ts`
+          - `app/globals.css`
+          - `docs/visual/VP0_PRODUCT_MEDIA_SNAPSHOT.json`
+          - `docs/visual/VP10_FINAL_VISUAL_ACCEPTANCE.md`
+
+          Frozen exhibition object:
+          - Nebula Espresso Cup
+          - Woo id 4848
+          - official image from the accepted VP0 source snapshot
+
+          Integration policy:
+          - source files are copied first;
+          - source imports / commerce edges may be adapted only after pinning;
+          - the exhibition does not duplicate Fokhara commerce;
+          - source visual decisions remain authoritative;
+          - rejected WebGL / 3D material experiments remain rejected.
+          EOF
+
+          rm -rf _source-fokhara
+
+      - name: Commit pinned source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add components/source/fokhara lib/source/fokhara docs/source/fokhara docs/provenance/fokhara.md
+          if git diff --cached --quiet; then
+            echo "FOKHARA_PIN=UNCHANGED"
+            exit 0
+          fi
+          git commit -m "Pin canonical Fokhara Home source"
+          git push origin HEAD:exhibition/fokhara-canonical-fragment-20260923
