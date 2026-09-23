@@ -1,0 +1,49 @@
+name: Exhibition CI
+
+on:
+  push:
+    branches:
+      - main
+      - exhibition/**
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect application
+        id: app
+        shell: bash
+        run: |
+          if [ -f package.json ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Node
+        if: steps.app.outputs.present == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install
+        if: steps.app.outputs.present == 'true'
+        run: npm install --no-audit --no-fund
+
+      - name: Lint
+        if: steps.app.outputs.present == 'true'
+        run: npm run lint
+
+      - name: Typecheck
+        if: steps.app.outputs.present == 'true'
+        run: npm run typecheck
+
+      - name: Build
+        if: steps.app.outputs.present == 'true'
+        run: npm run build
