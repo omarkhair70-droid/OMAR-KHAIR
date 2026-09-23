@@ -36,3 +36,27 @@ Integration policy:
 - any exhibition-only adapter change is committed separately after the pin;
 - no WAKING RELIC asset is included;
 - no source project history is rewritten.
+
+
+## Exhibition integration adaptations
+
+Applied after the byte-for-byte pin:
+
+1. `SeraraCanonicalBody.tsx`
+   - source sonic wake remains canonical;
+   - wake is gated by the exhibition's global sound choice;
+   - global shell / INDEX clicks do not wake SERAPH audio;
+   - SOUND OFF can dispose the SERAPH sonic runtime.
+
+2. `SeraraPerceptionSensor.tsx`
+   - canonical camera perception remains intact;
+   - the first permission-triggering gesture must occur on the SERAPH source surface;
+   - exhibition controls / INDEX do not accidentally request camera permission.
+
+3. Exhibition wrapper
+   - owns arrival seam from FIRST CONTACT;
+   - owns CONTEXT / CONTINUE;
+   - owns exit residue toward Fokhara;
+   - does not alter SERARA body, chamber, material or performance grammar.
+
+These changes are integration adapters, not SERAPH redesigns.
