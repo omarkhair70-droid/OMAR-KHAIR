@@ -1,18 +1,7 @@
 name: First Contact Visual QA
 
 on:
-  push:
-    branches:
-      - exhibition/first-contact-room-20260923
-    paths:
-      - "app/first-contact/**"
-      - "components/rooms/first-contact/**"
-      - "components/ExhibitionProvider.tsx"
-      - "components/ExhibitionShell.tsx"
-      - "app/globals.css"
-      - "package.json"
-      - "scripts/qa-first-contact.mjs"
-      - ".github/workflows/first-contact-qa.yml"
+  workflow_dispatch:
 
 jobs:
   visual-qa:
