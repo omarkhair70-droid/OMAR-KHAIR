@@ -85,6 +85,7 @@ export default function FirstContactRoom() {
   const soundRef = useRef<ReturnType<typeof createFirstContactSound> | null>(null);
   const holdStartRef = useRef(0);
   const progressStartRef = useRef(0.12);
+  const signalProgressRef = useRef(0.12);
   const leaveTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -115,13 +116,12 @@ export default function FirstContactRoom() {
   useEffect(() => {
     if (!holding || phase !== "signal" || signalCrossed) return;
 
-    holdStartRef.current = performance.now();
-    progressStartRef.current = signalProgress;
     let frame = 0;
 
     const tick = (now: number) => {
       const elapsed = now - holdStartRef.current;
       const next = Math.min(1, progressStartRef.current + elapsed / 1250);
+      signalProgressRef.current = next;
       setSignalProgress(next);
 
       if (next >= 1) {
@@ -142,7 +142,7 @@ export default function FirstContactRoom() {
 
     frame = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(frame);
-  }, [holding, phase, reducedMotion, signalCrossed, signalProgress]);
+  }, [holding, phase, reducedMotion, signalCrossed]);
 
   useEffect(() => () => {
     if (leaveTimerRef.current !== null) window.clearTimeout(leaveTimerRef.current);
@@ -174,6 +174,8 @@ export default function FirstContactRoom() {
 
   const startSignal = useCallback(() => {
     if (signalCrossed) return;
+    holdStartRef.current = performance.now();
+    progressStartRef.current = signalProgressRef.current;
     setHolding(true);
   }, [signalCrossed]);
 
@@ -187,6 +189,7 @@ export default function FirstContactRoom() {
 
   const keyboardSignal = useCallback(() => {
     if (signalCrossed) return;
+    signalProgressRef.current = 1;
     setSignalProgress(1);
     setSignalCrossed(true);
     soundRef.current?.accent("signal");
