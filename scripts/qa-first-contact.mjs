@@ -34,7 +34,9 @@ async function holdSignal(page) {
   const action = page.getByRole("button", { name: "HOLD THE SIGNAL" });
   await action.dispatchEvent("pointerdown", { pointerType: "mouse", button: 0 });
   await page.waitForTimeout(1450);
-  await action.dispatchEvent("pointerup", { pointerType: "mouse", button: 0 });
+  if (await action.count()) {
+    await action.dispatchEvent("pointerup", { pointerType: "mouse", button: 0 });
+  }
   await page.getByText("SOMETHING THIRD", { exact: true }).waitFor({ timeout: 5000 });
 }
 
