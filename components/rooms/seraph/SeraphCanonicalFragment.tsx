@@ -79,6 +79,7 @@ export default function SeraphCanonicalFragment() {
 
   return (
     <div
+      id="main-content"
       className={[
         styles.room,
         arriving ? styles.arriving : "",
