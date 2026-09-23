@@ -89,7 +89,7 @@
 
 .contextPanel {
   position: absolute;
-  z-index: 20;
+  z-index: 140;
   top: 0;
   right: 0;
   width: min(440px, 100vw);
