@@ -7,6 +7,7 @@ Parents:
 - `docs/OMAR_SELECTED_WORKS_LIVING_EXHIBITION_CURRATION.md`
 - `docs/LIVING_EXHIBITION_EXPERIENCE_ARCHITECTURE.md`
 - `docs/LIVING_EXHIBITION_ROOM_AUTHORSHIP_MATRIX.md`
+- `docs/EXHIBITION_CANONICAL_WORK_LAW.md`
 
 This document closes the last global decisions before a separate exhibition repository is created.
 
@@ -212,13 +213,13 @@ Do not create a single giant renderer.
 
 # 8. ROOM ENGINE BOUNDARIES
 
-## ENTRANCE
+## ENTRANCE / WALL OF EYES
 Engine:
 - DOM / CSS
-- small Canvas / SVG only if needed
+- inline SVG / procedural browser graphics only as needed
 
 Reason:
-the threshold must not spend the heaviest technology before the first work appears.
+the opening is a broadcast / witness field owned by the exhibition. It should be visually rich without loading the heavy room renderers before FIRST CONTACT.
 
 ## FIRST CONTACT
 Engine:

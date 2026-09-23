@@ -53,7 +53,7 @@ export default function ExhibitionShell() {
 
   return (
     <>
-      <header className="exhibition-shell">
+      <header className={`exhibition-shell${pathname === "/" ? " exhibition-shell--opening" : ""}`}>
         <Link href="/" className="exhibition-mark" aria-label="Omar Khair — exhibition entrance">
           OMAR KHAIR
         </Link>

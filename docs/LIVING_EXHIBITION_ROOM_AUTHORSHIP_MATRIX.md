@@ -24,6 +24,8 @@ It is the creative contract implementation must later prove.
 
 ---
 
+> Canonical-work correction: after FIRST CONTACT, rooms should use real canonical project fragments rather than rebuild source projects. See `docs/EXHIBITION_CANONICAL_WORK_LAW.md`.
+
 # GLOBAL ROOM LAW
 
 Every room must answer seven questions:
@@ -40,89 +42,89 @@ No room is allowed to survive only through explanatory copy.
 
 ---
 
-# 00 — ENTRANCE
+# 00 — ENTRANCE / WALL OF EYES
 
 ## Thesis
 
-**You are entering a selected world, not opening a résumé.**
+**The exhibition notices the visitor before it explains itself.**
 
-The entrance establishes authorship and agency before content.
+The entrance establishes authorship and agency through an original procedural wall of segmented broadcast / CRT frames.
 
 ## First frame
 
-A quiet field.
+A black field carrying irregular television frames.
+
+Some frames contain close-cropped procedural eyes.
+Others contain saturated red signal fields, bars, silhouettes or empty broadcast states.
 
 Visible:
 - OMAR KHAIR
-- SELECTED WORKS / LIVING EXHIBITION
+- SELECTED WORKS / 2026
 - INDEX
-
-One unresolved mark / seam / point relationship exists in the field.
-
-It must not already look like any one project.
-
-No thumbnails.
-No bio.
-No "creative technologist" label.
-
-## Visitor input
-
-Two equal entrance states:
-
 - ENTER WITH SOUND
 - ENTER IN SILENCE
 
-Pointer / touch may alter the unresolved mark slightly, but there is no mini-game.
+No thumbnails.
+No bio.
+No project explanation.
+
+## Visitor input
+
+Pointer / touch produces subtle gaze response.
+
+No forced timer.
+
+The wall remains alive until the visitor chooses to enter.
 
 ## Event
 
-On entry, the mark separates into two unresolved presences.
-
-This becomes the first material handoff into FIRST CONTACT.
+On entry:
+- wandering slows;
+- several eyes settle;
+- signal fields fall away;
+- frames collapse;
+- two unresolved presences remain;
+- FIRST CONTACT receives the handoff.
 
 ## Residue
 
-Two points / masses with an unresolved relation.
-
-## Transition out
-
-The field gains object weight.
-One of the presences becomes OBJECT 001.
+Two points / presences and one unresolved relation.
 
 ## Sound
 
-Silence until the visitor explicitly chooses sound.
+Silence until explicit sound opt-in.
 
-If sound is enabled:
-- one extremely restrained room-tone wake;
-- no musical intro.
+FIRST CONTACT owns the first meaningful sound material.
 
 ## Mobile
 
-The same threshold works one-handed.
-No landscape requirement.
-The sound choice remains immediate and legible.
+A recomposed wall, not a shrunken desktop grid.
+
+No motion-sensor permission.
 
 ## Reduced motion
 
-Static unresolved composition.
-Entry is a finite cut / fade.
+A designed static broadcast wall.
+No repeated blinking or continuous tracking.
 
 ## Required source assets
 
-None from project repos.
+None.
 
-The Entrance belongs to the exhibition itself.
+The opening is exhibition-owned and procedural.
+
+Reference mood is documented in:
+`docs/opening/WALL_OF_EYES_OPENING_BIBLE.md`
 
 ## Forbidden
 
-- portfolio hero;
-- showcase reel;
-- loading percentage;
-- giant 3D sculpture;
-- particle tunnel;
-- "welcome to my world";
-- explanation of the seven works.
+- external film / TV footage;
+- horror treatment;
+- generic glitch montage;
+- surveillance UI;
+- forced countdown;
+- project thumbnails;
+- giant explanatory hero copy.
 
 ---
 

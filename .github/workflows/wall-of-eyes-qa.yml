@@ -1,0 +1,68 @@
+name: Wall of Eyes Visual QA
+
+on:
+  push:
+    branches:
+      - exhibition/wall-of-eyes-opening-20260923
+    paths:
+      - "components/opening/**"
+      - "components/Entrance.tsx"
+      - "components/ExhibitionShell.tsx"
+      - "components/ExhibitionProvider.tsx"
+      - "app/page.tsx"
+      - "app/globals.css"
+      - "scripts/qa-wall-of-eyes.mjs"
+      - ".github/workflows/wall-of-eyes-qa.yml"
+
+jobs:
+  visual-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install application
+        run: npm install --no-audit --no-fund
+
+      - name: Validate application
+        run: |
+          npm run lint
+          npm run typecheck
+          npm run build
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start production server
+        run: |
+          npm start -- -H 127.0.0.1 > /tmp/omar-khair-next.log 2>&1 &
+          for i in {1..60}; do
+            if curl -fsS http://127.0.0.1:3000/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/omar-khair-next.log
+          exit 1
+
+      - name: Run Wall of Eyes browser QA
+        env:
+          BASE_URL: http://127.0.0.1:3000
+        run: node scripts/qa-wall-of-eyes.mjs
+
+      - name: Upload QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wall-of-eyes-qa
+          path: artifacts/wall-of-eyes-qa
+          if-no-files-found: error
