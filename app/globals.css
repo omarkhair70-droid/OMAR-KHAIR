@@ -422,3 +422,8 @@ a {
     transition-duration: 0.001ms !important;
   }
 }
+
+.exhibition-shell--opening .exhibition-mark {
+  opacity: 0;
+  pointer-events: none;
+}
