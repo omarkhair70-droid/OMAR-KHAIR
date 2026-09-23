@@ -71,6 +71,16 @@ a {
   pointer-events: auto;
 }
 
+.exhibition-shell--opening {
+  color: #f4f0e8;
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.72);
+}
+
+.exhibition-shell--opening .shell-action,
+.exhibition-shell--opening .exhibition-mark {
+  color: inherit;
+}
+
 .exhibition-mark {
   font-size: 0.72rem;
   font-weight: 800;
