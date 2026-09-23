@@ -427,3 +427,14 @@ a {
   opacity: 0;
   pointer-events: none;
 }
+
+
+.exhibition-shell--dark {
+  color: #f1ebe2;
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.78);
+}
+
+.exhibition-shell--dark .shell-action,
+.exhibition-shell--dark .exhibition-mark {
+  color: inherit;
+}

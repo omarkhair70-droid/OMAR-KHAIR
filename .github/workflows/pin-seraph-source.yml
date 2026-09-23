@@ -1,0 +1,104 @@
+name: Pin SERAPH Canonical Source
+
+on:
+  push:
+    branches:
+      - exhibition/seraph-canonical-fragment-20260923
+    paths:
+      - ".github/workflows/pin-seraph-source.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  pin-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout exhibition branch
+        uses: actions/checkout@v4
+        with:
+          ref: exhibition/seraph-canonical-fragment-20260923
+          fetch-depth: 0
+
+      - name: Checkout canonical SERAPH snapshot
+        uses: actions/checkout@v4
+        with:
+          repository: omarkhair70-droid/seraph
+          ref: 96ded3ad61cddf0636e05f7f427147cfdeba4798
+          path: _source-seraph
+
+      - name: Pin canonical runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p components/source/seraph
+          mkdir -p public/assets/serara-cinematic/audio
+          mkdir -p docs/provenance
+
+          for file in             SeraphExperience.tsx             SeraphExperience.module.css             SeraphWorld.tsx             SeraraCanonicalBody.tsx             SeraraPerceptionSensor.tsx             CinematicChamberVFX.tsx             serara-material.ts             serara-perception.ts             serara-performance.ts             serara-presence-memory.ts             serara-runtime-signal.ts             serara-sonic.ts             serara-state.ts
+          do
+            cp "_source-seraph/components/seraph/$file" "components/source/seraph/$file"
+          done
+
+          cp _source-seraph/public/assets/serara-canonical.glb public/assets/serara-canonical.glb
+          cp _source-seraph/public/assets/serara-cinematic/audio/*.mp3 public/assets/serara-cinematic/audio/
+
+          cat > docs/provenance/seraph.md <<'EOF'
+          # SERAPH — EXHIBITION SOURCE PROVENANCE
+
+          Canonical repository:
+          `omarkhair70-droid/seraph`
+
+          Canonical snapshot:
+          `96ded3ad61cddf0636e05f7f427147cfdeba4798`
+
+          Canonical closure:
+          `docs/SERARA_THE_BODY_FINAL_CLOSURE_2026-09-23.md`
+
+          Exhibition fragment:
+          `THE BODY — canonical chamber`
+
+          Pinned runtime files:
+          - `components/seraph/SeraphExperience.tsx`
+          - `components/seraph/SeraphExperience.module.css`
+          - `components/seraph/SeraphWorld.tsx`
+          - `components/seraph/SeraraCanonicalBody.tsx`
+          - `components/seraph/SeraraPerceptionSensor.tsx`
+          - `components/seraph/CinematicChamberVFX.tsx`
+          - `components/seraph/serara-material.ts`
+          - `components/seraph/serara-perception.ts`
+          - `components/seraph/serara-performance.ts`
+          - `components/seraph/serara-presence-memory.ts`
+          - `components/seraph/serara-runtime-signal.ts`
+          - `components/seraph/serara-sonic.ts`
+          - `components/seraph/serara-state.ts`
+
+          Pinned runtime assets:
+          - `public/assets/serara-canonical.glb`
+          - `public/assets/serara-cinematic/audio/*.mp3`
+
+          Integration policy:
+          - source runtime is copied byte-for-byte first;
+          - any exhibition-only adapter change is committed separately after the pin;
+          - no WAKING RELIC asset is included;
+          - no source project history is rewritten.
+          EOF
+
+          rm -rf _source-seraph
+
+      - name: Commit pinned source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add components/source/seraph public/assets/serara-canonical.glb public/assets/serara-cinematic/audio docs/provenance/seraph.md
+          if git diff --cached --quiet; then
+            echo "SERAPH_PIN=UNCHANGED"
+            exit 0
+          fi
+          git commit -m "Pin canonical SERAPH THE BODY source"
+          git push origin HEAD:exhibition/seraph-canonical-fragment-20260923

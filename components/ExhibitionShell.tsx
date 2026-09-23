@@ -50,10 +50,11 @@ export default function ExhibitionShell() {
   }, [indexOpen]);
 
   const currentSlug = pathname === "/" ? "" : pathname.slice(1).split("/")[0];
+  const darkShell = pathname === "/" || pathname.startsWith("/seraph");
 
   return (
     <>
-      <header className={`exhibition-shell${pathname === "/" ? " exhibition-shell--opening" : ""}`}>
+      <header className={`exhibition-shell${pathname === "/" ? " exhibition-shell--opening" : ""}${darkShell ? " exhibition-shell--dark" : ""}`}>
         <Link href="/" className="exhibition-mark" aria-label="Omar Khair — exhibition entrance">
           OMAR KHAIR
         </Link>

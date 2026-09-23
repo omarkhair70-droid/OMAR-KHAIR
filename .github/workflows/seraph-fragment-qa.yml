@@ -1,0 +1,71 @@
+name: SERAPH Canonical Fragment QA
+
+on:
+  push:
+    branches:
+      - exhibition/seraph-canonical-fragment-20260923
+    paths:
+      - "app/seraph/**"
+      - "components/rooms/seraph/**"
+      - "components/source/seraph/**"
+      - "public/assets/serara-canonical.glb"
+      - "public/assets/serara-cinematic/audio/**"
+      - "components/ExhibitionShell.tsx"
+      - "components/ExhibitionProvider.tsx"
+      - "app/globals.css"
+      - "package.json"
+      - "scripts/qa-seraph-fragment.mjs"
+      - ".github/workflows/seraph-fragment-qa.yml"
+
+jobs:
+  visual-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install application
+        run: npm install --no-audit --no-fund
+
+      - name: Validate application
+        run: |
+          npm run lint
+          npm run typecheck
+          npm run build
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start production server
+        run: |
+          npm start -- -H 127.0.0.1 > /tmp/omar-khair-next.log 2>&1 &
+          for i in {1..60}; do
+            if curl -fsS http://127.0.0.1:3000/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/omar-khair-next.log
+          exit 1
+
+      - name: Run SERAPH fragment browser QA
+        env:
+          BASE_URL: http://127.0.0.1:3000
+        run: node scripts/qa-seraph-fragment.mjs
+
+      - name: Upload QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seraph-fragment-qa
+          path: artifacts/seraph-fragment-qa
+          if-no-files-found: error
