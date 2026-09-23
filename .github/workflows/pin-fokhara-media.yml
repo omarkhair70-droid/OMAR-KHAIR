@@ -1,0 +1,46 @@
+name: Pin Fokhara Product Media
+
+on:
+  push:
+    branches:
+      - exhibition/fokhara-canonical-fragment-20260923
+    paths:
+      - ".github/workflows/pin-fokhara-media.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  pin-media:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout exhibition branch
+        uses: actions/checkout@v4
+        with:
+          ref: exhibition/fokhara-canonical-fragment-20260923
+          fetch-depth: 0
+
+      - name: Download accepted official product image
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/exhibition/fokhara
+          curl --fail --location --retry 3             "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7409.webp"             --output public/exhibition/fokhara/nebula-espresso-cup.webp
+          test -s public/exhibition/fokhara/nebula-espresso-cup.webp
+          file public/exhibition/fokhara/nebula-espresso-cup.webp
+
+      - name: Commit pinned media
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/exhibition/fokhara/nebula-espresso-cup.webp
+          if git diff --cached --quiet; then
+            echo "FOKHARA_MEDIA=UNCHANGED"
+            exit 0
+          fi
+          git commit -m "Pin Fokhara Nebula product media"
+          git push origin HEAD:exhibition/fokhara-canonical-fragment-20260923
