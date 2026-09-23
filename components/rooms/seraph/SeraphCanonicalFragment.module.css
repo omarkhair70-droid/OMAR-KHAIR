@@ -7,6 +7,11 @@
   color: #e8dfd2;
 }
 
+.source {
+  position: absolute;
+  inset: 0;
+}
+
 .room :global(.exhibition-shell) {
   color: #e8dfd2;
 }
