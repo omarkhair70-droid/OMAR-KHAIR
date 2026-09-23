@@ -1,0 +1,161 @@
+{
+  "auditedAt": "2026-09-03",
+  "source": "https://fokhara.vercel.app/api/commerce/products",
+  "note": "Frozen VP0 audit snapshot only. Runtime product media must continue to come from live Woo data.",
+  "count": 19,
+  "products": [
+    {
+      "wooId": 4848,
+      "slug": "nebula-espresso-cup",
+      "name": "Nebula Espresso Cup",
+      "collection": "Nebula",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7409.webp"
+    },
+    {
+      "wooId": 4844,
+      "slug": "nebula-pinch-cup",
+      "name": "Nebula Pinch Cup",
+      "collection": "Nebula",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7393.webp"
+    },
+    {
+      "wooId": 4841,
+      "slug": "midnight-pinch-cup",
+      "name": "Midnight Pinch Cup",
+      "collection": "Midnight",
+      "stock": "out_of_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7490.webp"
+    },
+    {
+      "wooId": 4838,
+      "slug": "midnight-mug",
+      "name": "Midnight Mug",
+      "collection": "Midnight",
+      "stock": "out_of_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7487.webp"
+    },
+    {
+      "wooId": 4835,
+      "slug": "ocean-espresso-cup",
+      "name": "Ocean Espresso Cup",
+      "collection": "Ocean",
+      "stock": "out_of_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7445.webp"
+    },
+    {
+      "wooId": 4832,
+      "slug": "ocean-pinch-cup",
+      "name": "Ocean Pinch Cup",
+      "collection": "Ocean",
+      "stock": "out_of_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7442.webp"
+    },
+    {
+      "wooId": 4828,
+      "slug": "ocean-short-mug",
+      "name": "Ocean Short Mug",
+      "collection": "Ocean",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7424.webp"
+    },
+    {
+      "wooId": 4825,
+      "slug": "ocean-mug",
+      "name": "Ocean Mug",
+      "collection": "Ocean",
+      "stock": "out_of_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7415.webp"
+    },
+    {
+      "wooId": 4822,
+      "slug": "foggy-espresso-cup",
+      "name": "Foggy Espresso Cup",
+      "collection": "Foggy",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7438.webp"
+    },
+    {
+      "wooId": 4820,
+      "slug": "foggy-short-mug",
+      "name": "Foggy Short Mug",
+      "collection": "Foggy",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7439.webp"
+    },
+    {
+      "wooId": 4817,
+      "slug": "lazuli-espresso-cup",
+      "name": "Lazuli Espresso Cup",
+      "collection": "Lazuli",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7483.webp"
+    },
+    {
+      "wooId": 4813,
+      "slug": "lazuli-short-mug",
+      "name": "Lazuli Short Mug",
+      "collection": "Lazuli",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7478.webp"
+    },
+    {
+      "wooId": 4808,
+      "slug": "lazuli-pinched-cup",
+      "name": "Lazuli Pinched Cup",
+      "collection": "Lazuli",
+      "stock": "out_of_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7505.webp"
+    },
+    {
+      "wooId": 4805,
+      "slug": "lazuli-mug",
+      "name": "Lazuli Mug",
+      "collection": "Lazuli",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7508.webp"
+    },
+    {
+      "wooId": 4802,
+      "slug": "latte-foam-mug-9",
+      "name": "Seaweed Short Mug",
+      "collection": "Seaweed",
+      "stock": "out_of_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7421.webp",
+      "dataNote": "Woo slug currently does not match the visible product name/collection."
+    },
+    {
+      "wooId": 4799,
+      "slug": "seaweed-mug",
+      "name": "Seaweed Mug",
+      "collection": "Seaweed",
+      "stock": "out_of_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7412.webp"
+    },
+    {
+      "wooId": 4792,
+      "slug": "latte-foam-espresso-cup",
+      "name": "Latte Foam Espresso Cup",
+      "collection": "Latte Foam",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7468.webp"
+    },
+    {
+      "wooId": 4790,
+      "slug": "latte-foam-pinched-cup",
+      "name": "Latte Foam Pinched Cup",
+      "collection": "Latte Foam",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7463.webp"
+    },
+    {
+      "wooId": 4789,
+      "slug": "latte-foam-mug",
+      "name": "Latte Foam Mug",
+      "collection": "Latte Foam",
+      "stock": "in_stock",
+      "image": "https://fokharastudioandshop.com/wp-content/uploads/2025/12/dscf7460.webp"
+    }
+  ]
+}
