@@ -1,0 +1,246 @@
+.room {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #080706;
+  color: #e8dfd2;
+}
+
+.room :global(.exhibition-shell) {
+  color: #e8dfd2;
+}
+
+.sourceMask {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(8, 7, 6, .36), transparent 14%, transparent 78%, rgba(8, 7, 6, .48)),
+    radial-gradient(circle at 50% 50%, transparent 46%, rgba(8,7,6,.24) 100%);
+}
+
+.exhibitionLabel {
+  position: absolute;
+  z-index: 7;
+  left: clamp(1rem, 2vw, 1.6rem);
+  top: clamp(5.2rem, 9vh, 6.5rem);
+  display: grid;
+  gap: .22rem;
+  pointer-events: none;
+  text-shadow: 0 2px 18px rgba(0,0,0,.65);
+}
+
+.exhibitionLabel span,
+.exhibitionLabel strong,
+.actions button,
+.eyebrow,
+.meta {
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.exhibitionLabel span {
+  color: rgba(232,223,210,.48);
+}
+
+.exhibitionLabel strong {
+  font-weight: 800;
+}
+
+.actions {
+  position: absolute;
+  z-index: 8;
+  right: clamp(1rem, 2vw, 1.6rem);
+  bottom: clamp(1rem, 2.6vh, 1.8rem);
+  display: flex;
+  gap: 1.2rem;
+}
+
+.actions button,
+.close {
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  padding: .48rem 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.actions button:disabled {
+  cursor: wait;
+  opacity: .38;
+}
+
+.actions button:focus-visible,
+.close:focus-visible,
+.contextPanel a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+}
+
+.contextPanel {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  width: min(440px, 100vw);
+  height: 100svh;
+  padding: 6rem 1.5rem 2rem;
+  overflow: auto;
+  border-left: 1px solid rgba(232,223,210,.14);
+  background: rgba(11, 9, 8, .94);
+  color: #e8dfd2;
+  backdrop-filter: blur(18px);
+}
+
+.close {
+  position: absolute;
+  top: 1.35rem;
+  right: 1.5rem;
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.eyebrow {
+  margin: 0 0 1.8rem;
+  color: rgba(232,223,210,.45);
+}
+
+.contextPanel h2 {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: .86;
+  letter-spacing: -.055em;
+}
+
+.contextPanel p:not(.eyebrow):not(.meta) {
+  margin: 1.5rem 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+}
+
+.meta {
+  margin: 2rem 0;
+  color: rgba(232,223,210,.45);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.contextPanel a {
+  display: inline-block;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: .3rem;
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-decoration: none;
+}
+
+.arrivalSeam,
+.exitContour {
+  position: absolute;
+  z-index: 30;
+  inset: 0;
+  pointer-events: none;
+}
+
+.arrivalSeam {
+  display: grid;
+  place-items: center;
+  background: #090706;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.arrivalSeam i {
+  display: block;
+  width: min(44vw, 620px);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d77a62 18%, #f0c0a0 50%, #8f3f32 80%, transparent);
+  box-shadow: 0 0 34px rgba(211, 121, 97, .26);
+  transform: rotate(-7deg) scaleX(.7);
+  transition: transform 900ms cubic-bezier(.2,.8,.2,1), opacity 650ms ease;
+}
+
+.arriving .arrivalSeam {
+  opacity: 1;
+}
+
+.arriving .arrivalSeam i {
+  transform: rotate(-7deg) scaleX(1);
+}
+
+.exitContour {
+  opacity: 0;
+  background: rgba(5,4,4,.9);
+  transition: opacity 680ms ease;
+}
+
+.exitContour span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(120px, 18vw, 260px);
+  height: clamp(260px, 48vh, 520px);
+  border: 1px solid rgba(232,223,210,.18);
+  border-radius: 48% 52% 44% 56% / 30% 36% 64% 70%;
+  transform: translate(-50%, -50%);
+}
+
+.exitContour span:nth-child(2) {
+  width: clamp(90px, 13vw, 190px);
+  height: clamp(230px, 42vh, 440px);
+  border-color: rgba(211,121,97,.32);
+  transform: translate(-48%, -49%) rotate(4deg);
+}
+
+.exitContour span:nth-child(3) {
+  width: clamp(60px, 8vw, 120px);
+  height: clamp(180px, 34vh, 340px);
+  border-color: rgba(235,218,202,.22);
+  transform: translate(-53%, -51%) rotate(-5deg);
+}
+
+.leaving .exitContour {
+  opacity: 1;
+}
+
+.leaving > :not(.exitContour) {
+  transition: opacity 520ms ease, filter 520ms ease;
+  opacity: .18;
+  filter: saturate(.35) brightness(.55);
+}
+
+@media (max-width: 700px) {
+  .exhibitionLabel {
+    top: 4.8rem;
+  }
+
+  .actions {
+    right: 1rem;
+    bottom: 1.1rem;
+  }
+
+  .contextPanel {
+    border-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrivalSeam,
+  .arrivalSeam i,
+  .exitContour,
+  .leaving > :not(.exitContour) {
+    transition-duration: .001ms !important;
+  }
+}
