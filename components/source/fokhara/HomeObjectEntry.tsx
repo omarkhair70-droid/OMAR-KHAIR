@@ -1,10 +1,11 @@
 "use client";
 
-import { CarryProductLink } from "@/components/CarryProductLink";
-import type { Product } from "@/lib/products";
-import { formatEgp } from "@/lib/products";
-import { TrackedLink } from "@/components/TrackedLink";
-import { materialStateCssVars } from "@/lib/visual/material-state";
+import type { Product } from "@/lib/source/fokhara/products";
+import { formatEgp } from "@/lib/source/fokhara/products";
+import { materialStateCssVars } from "@/lib/source/fokhara/visual/material-state";
+import { ProductVisual } from "./ProductVisual";
+
+const FULL_WORK = "https://fokhara.vercel.app";
 
 export function HomeObjectEntry({ product }: { product: Product }) {
   return (
@@ -21,35 +22,38 @@ export function HomeObjectEntry({ product }: { product: Product }) {
           a trace of how it was made, then moves into everyday use.
         </p>
         <div className="homeActions">
-          <TrackedLink
+          <a
             className="buttonPrimary"
-            href="/shop"
-            eventName="home_shop_enter"
+            href={`${FULL_WORK}/shop`}
+            target="_blank"
+            rel="noreferrer"
           >
             Explore ceramics
-          </TrackedLink>
-          <TrackedLink
+          </a>
+          <a
             className="buttonGhost"
-            href="/workshops"
-            eventName="home_workshops_enter"
+            href={`${FULL_WORK}/workshops`}
+            target="_blank"
+            rel="noreferrer"
           >
             Enter the process
-          </TrackedLink>
+          </a>
         </div>
       </div>
 
-      <CarryProductLink
-        product={product}
+      <div
         className="homeObject__product"
         style={materialStateCssVars(product.collection)}
-        visualRole="home"
       >
+        <div className="carrySource">
+          <ProductVisual product={product} visualRole="home" />
+        </div>
         <div className="objectCaption">
           <span>{product.collection}</span>
           <strong>{product.name}</strong>
           <span>{formatEgp(product.priceEgp)}</span>
         </div>
-      </CarryProductLink>
+      </div>
     </section>
   );
 }
