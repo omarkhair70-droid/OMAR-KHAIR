@@ -73,8 +73,9 @@ try {
     attach(page, "desktop");
     await primeFirstContactResidue(page);
 
-    await page.goto(`${baseUrl}/seraph`, { waitUntil: "networkidle" });
-    await page.waitForTimeout(2600);
+    await page.goto(`${baseUrl}/seraph`, { waitUntil: "domcontentloaded" });
+    await page.locator("canvas").waitFor({ timeout: 10000 });
+    await page.waitForTimeout(1800);
 
     report.desktop.canvas = await page.locator("canvas").count();
     report.desktop.sourceHeader = await page.getByText("SERARA://01", { exact: true }).isVisible();
@@ -123,8 +124,9 @@ try {
     const page = await context.newPage();
     attach(page, "mobile");
 
-    await page.goto(`${baseUrl}/seraph`, { waitUntil: "networkidle" });
-    await page.waitForTimeout(2600);
+    await page.goto(`${baseUrl}/seraph`, { waitUntil: "domcontentloaded" });
+    await page.locator("canvas").waitFor({ timeout: 10000 });
+    await page.waitForTimeout(1800);
 
     report.mobile.canvas = await page.locator("canvas").count();
     report.mobile.sourceHeader = await page.getByText("SERARA://01", { exact: true }).isVisible();
@@ -147,8 +149,9 @@ try {
     const page = await context.newPage();
     attach(page, "reduced-motion");
 
-    await page.goto(`${baseUrl}/seraph`, { waitUntil: "networkidle" });
-    await page.waitForTimeout(2200);
+    await page.goto(`${baseUrl}/seraph`, { waitUntil: "domcontentloaded" });
+    await page.locator("canvas").waitFor({ timeout: 10000 });
+    await page.waitForTimeout(1600);
 
     report.reducedMotion.canvas = await page.locator("canvas").count();
     report.reducedMotion.noOverflow = await noOverflow(page);
