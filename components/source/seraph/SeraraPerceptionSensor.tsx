@@ -777,7 +777,6 @@ export default function SeraraPerceptionSensor() {
 
     const start = (event: Event) => {
       if (
-        event.type === "pointerdown" &&
         event.target instanceof Element &&
         !event.target.closest("[data-seraph-fragment]")
       ) {
