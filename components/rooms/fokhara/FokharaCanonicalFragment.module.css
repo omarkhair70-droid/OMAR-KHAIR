@@ -285,10 +285,11 @@
   margin: 0;
   max-width: 8ch;
   font-family: var(--font-instrument-sans), Arial, sans-serif;
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(2.8rem, 5.2vw, 4.35rem);
   font-weight: 500;
-  line-height: .84;
-  letter-spacing: -.065em;
+  line-height: .86;
+  letter-spacing: -.06em;
+  overflow-wrap: anywhere;
 }
 
 .contextPanel p:not(.eyebrow):not(.meta) {
