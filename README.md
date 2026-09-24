@@ -2,27 +2,53 @@
 
 **LIVING EXHIBITION / 2026**
 
-This repository is the independent authored exhibition by Omar Khair.
+An authored browser-based exhibition by Omar Khair.
 
-It is not the main explanatory portfolio, not a recruiter site, and not a complete archive.
+This is not the complete portfolio, not a recruiter site, and not a catalogue of every project. It is a short exhibition built from selected source work and exhibition-born material.
 
-The exhibition selects a small body of work and re-authors each selected work as an encounter.
+## Current exhibition cut
 
-Current curated body:
-- FIRST CONTACT
-- SERAPH
-- Fokhara
-- Habba
-- WaveZero
-- HILTECH public digital experience
-- Nova
+```
+WALL OF EYES
+      ↓
+FIRST CONTACT
+      ↓
+SERAPH / THE BODY
+      ↓
+AFTERIMAGE / ABSENCE
+```
 
-The existing Omar portfolio remains the source for full case studies, roles, engineering context, and delivery proof.
+The current internal spine is:
 
-## Current phase
+**The room sees you → you attempt contact → contact takes a body → the body disappears → you carry its trace.**
 
-**Preproduction closed → repository bootstrap begins.**
+This sentence is a curatorial working thesis, not required explanatory copy for the visitor.
 
-Canonical documents live under `docs/`.
+### Exhibition-owned work
+- WALL OF EYES — procedural entrance / witness field.
+- AFTERIMAGE / ABSENCE — final remembered-body state authored from the visitor's SERAPH encounter.
+- sequencing, transitions, INDEX, sound law and session residue.
 
-No room implementation should begin before the shared exhibition shell, routing, INDEX, sound state, and session state are established.
+### Selected source work
+- FIRST CONTACT — accepted generalized exhibition encounter derived from the owned source work.
+- SERAPH / THE BODY — pinned canonical source fragment from `omarkhair70-droid/seraph`.
+
+Fokhara and the previously planned additional rooms are **not part of the current exhibition cut**. They remain valid source projects and historical curatorial research; their exclusion is a curatorial decision, not a demotion.
+
+## Current status
+
+**FINAL FINE ART JURY: ACCEPTED / CLOSURE STATE**
+
+No additional room or feature is admitted by default.
+
+Future changes must answer a concrete problem in the work itself. “More impressive,” “more technical,” “more minimal,” or “more fine-art-looking” are not sufficient reasons to alter the exhibition.
+
+Canonical final closure:
+`docs/OMAR_KHAIR_SELECTED_WORKS_FINAL_CLOSURE_2026-09-24.md`
+
+Public-facing exhibition / artist text:
+`docs/OMAR_KHAIR_SELECTED_WORKS_PUBLIC_TEXT_2026-09-24.md`
+
+## Source-of-truth note
+
+Earlier curation and architecture documents preserve the development history of the exhibition, including the former seven-work plan. They are historical unless explicitly reaffirmed by the final closure document above.
