@@ -1,3 +1,6 @@
+> **FINAL STATUS NOTE — 2026-09-24**  
+> This document is preserved as development history. Its former seven-work plan has been superseded by `docs/OMAR_KHAIR_SELECTED_WORKS_FINAL_CLOSURE_2026-09-24.md`. The current exhibition cut is WALL OF EYES → FIRST CONTACT → SERAPH / THE BODY → AFTERIMAGE / ABSENCE.
+
 # OMAR KHAIR — SELECTED WORKS / LIVING EXHIBITION
 
 Status: **CURATION V1 LOCKED FOR EXPERIENCE AUTHORSHIP**
