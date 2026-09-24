@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useExhibition } from "@/components/ExhibitionProvider";
 import SeraphExperience from "@/components/source/seraph/SeraphExperience";
+import { getSeraraPerformanceSnapshot } from "@/components/source/seraph/serara-performance";
 import styles from "./SeraphCanonicalFragment.module.css";
 
 export default function SeraphCanonicalFragment() {
@@ -69,7 +70,25 @@ export default function SeraphCanonicalFragment() {
   const leave = () => {
     if (leaving) return;
 
+    const memory = getSeraraPerformanceSnapshot();
+
     setResidue("seraph", "body-contour");
+    setResidue(
+      "seraph-memory",
+      JSON.stringify({
+        phase: memory.phase,
+        grace: memory.grace,
+        tension: memory.tension,
+        fall: memory.fall,
+        recognition: memory.recognition,
+        stillness: memory.stillness,
+        afterimage: memory.afterimage,
+        residue: memory.residue,
+        heat: memory.heat,
+        attentionX: memory.attentionX,
+        attentionY: memory.attentionY,
+      }),
+    );
     setLeaving(true);
 
     timerRef.current = window.setTimeout(() => {

@@ -13,7 +13,7 @@
   inset: 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 49%, rgba(25, 17, 15, .28), transparent 34%),
+    radial-gradient(circle at 50% 49%, rgba(25, 17, 15, .24), transparent 34%),
     #050404;
 }
 
@@ -21,85 +21,43 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: min(40vw, 560px);
-  height: min(72vh, 720px);
+  width: min(42vw, 590px);
+  height: min(74vh, 740px);
   border-radius: 50%;
   background:
     radial-gradient(
       ellipse at center,
-      rgba(101, 143, 139, .055) 0 22%,
-      rgba(93, 125, 124, .025) 44%,
+      rgba(105, 151, 146, .07) 0 18%,
+      rgba(91, 128, 126, .032) 42%,
       transparent 72%
     );
-  filter: blur(24px);
-  transform: translate(-50%, -50%) scale(.74);
-  opacity: 0;
+  filter: blur(27px);
+  transform: translate(-50%, -50%) scale(.76);
   animation: residual-light 7.8s cubic-bezier(.18,.7,.18,1) forwards;
 }
 
-.trace {
+.memoryBody {
   position: absolute;
   inset: 0;
-}
-
-.trace span,
-.coolBurn {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  display: block;
-  transform-origin: center;
-}
-
-.trace span {
-  border: 1px solid rgba(232, 223, 210, .18);
-  border-radius: 48% 52% 44% 56% / 30% 36% 64% 70%;
-}
-
-.outer {
-  width: clamp(120px, 18vw, 260px);
-  height: clamp(260px, 48vh, 520px);
-  transform: translate(-50%, -50%);
-  animation: outer-loss 6.9s cubic-bezier(.22,.62,.18,1) forwards;
-}
-
-.middle {
-  width: clamp(90px, 13vw, 190px);
-  height: clamp(230px, 42vh, 440px);
-  border-color: rgba(211, 121, 97, .32) !important;
-  transform: translate(-48%, -49%) rotate(4deg);
-  animation: middle-loss 4.6s cubic-bezier(.2,.66,.2,1) forwards;
-}
-
-.inner {
-  width: clamp(60px, 8vw, 120px);
-  height: clamp(180px, 34vh, 340px);
-  border-color: rgba(235, 218, 202, .22) !important;
-  transform: translate(-53%, -51%) rotate(-5deg);
-  animation: inner-loss 3.2s cubic-bezier(.2,.66,.2,1) forwards;
-}
-
-.coolBurn {
-  width: clamp(130px, 19vw, 275px);
-  height: clamp(275px, 50vh, 540px);
-  border: 1px solid rgba(122, 177, 171, .12);
-  border-radius: 49% 51% 45% 55% / 31% 37% 63% 69%;
-  box-shadow:
-    0 0 32px rgba(114, 174, 168, .07),
-    inset 0 0 28px rgba(114, 174, 168, .025);
-  filter: blur(.35px);
-  transform: translate(-50.2%, -50%) scale(.985);
   opacity: 0;
-  animation: cool-burn 7.4s cubic-bezier(.2,.7,.2,1) forwards;
+  filter: blur(0);
+  transform: scale(1);
+  animation: remembered-body-loss 7.7s cubic-bezier(.18,.7,.18,1) forwards;
+}
+
+.memoryBody canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .grain {
   position: absolute;
   inset: -20%;
-  opacity: .08;
+  opacity: .075;
   background-image:
-    radial-gradient(circle at 20% 40%, rgba(255,255,255,.06) 0 .5px, transparent .7px),
-    radial-gradient(circle at 70% 60%, rgba(255,255,255,.035) 0 .5px, transparent .8px);
+    radial-gradient(circle at 20% 40%, rgba(255,255,255,.055) 0 .5px, transparent .7px),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,.03) 0 .5px, transparent .8px);
   background-size: 7px 7px, 11px 11px;
   transform: rotate(.001deg);
   animation: grain-loss 8s ease forwards;
@@ -171,42 +129,58 @@
   border: 0;
 }
 
-@keyframes inner-loss {
-  0%, 12% { opacity: 1; filter: blur(0); }
-  58% { opacity: .18; filter: blur(.7px); }
-  100% { opacity: 0; filter: blur(2px); }
-}
+@keyframes remembered-body-loss {
+  0% {
+    opacity: .9;
+    filter: blur(0);
+    transform: scale(1);
+  }
 
-@keyframes middle-loss {
-  0%, 18% { opacity: 1; }
-  64% { opacity: .14; filter: blur(.55px); }
-  100% { opacity: 0; filter: blur(2.4px); }
-}
+  18% {
+    opacity: .66;
+  }
 
-@keyframes outer-loss {
-  0%, 20% { opacity: .95; }
-  58% { opacity: .24; border-color: rgba(165,195,190,.13); }
-  86% { opacity: .055; filter: blur(1.3px); }
-  100% { opacity: 0; filter: blur(3px); }
-}
+  47% {
+    opacity: .23;
+    filter: blur(.55px);
+    transform: scale(1.004);
+  }
 
-@keyframes cool-burn {
-  0%, 24% { opacity: 0; }
-  43% { opacity: .22; }
-  70% { opacity: .075; transform: translate(-50.2%, -50%) scale(1.015); }
-  100% { opacity: 0; transform: translate(-50.2%, -50%) scale(1.035); filter: blur(3px); }
+  76% {
+    opacity: .065;
+    filter: blur(1.6px);
+    transform: scale(1.013);
+  }
+
+  100% {
+    opacity: 0;
+    filter: blur(4.2px);
+    transform: scale(1.025);
+  }
 }
 
 @keyframes residual-light {
-  0%, 22% { opacity: 0; transform: translate(-50%, -50%) scale(.74); }
-  50% { opacity: .75; transform: translate(-50%, -50%) scale(.92); }
-  82% { opacity: .14; }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08); }
+  0%, 16% {
+    transform: translate(-50%, -50%) scale(.76);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(.94);
+  }
+
+  82% {
+    opacity: .08;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
 }
 
 @keyframes grain-loss {
-  0%, 68% { opacity: .08; }
-  100% { opacity: .025; }
+  0%, 68% { opacity: .075; }
+  100% { opacity: .022; }
 }
 
 @keyframes end-arrival {
@@ -229,28 +203,30 @@
   }
 
   .residualLight {
-    width: min(74vw, 440px);
+    width: min(78vw, 470px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .residualLight,
-  .outer,
-  .middle,
-  .inner,
-  .coolBurn,
+  .memoryBody,
   .grain,
   .endState {
-    animation-duration: .001ms !important;
+    animation: none !important;
   }
 
-  .trace span,
-  .coolBurn,
-  .residualLight {
+  .memoryBody {
+    opacity: .075;
+    filter: none;
+    transform: none;
+  }
+
+  .room[data-settled="true"] .memoryBody,
+  .room[data-settled="true"] .residualLight {
     opacity: 0;
   }
 
   .grain {
-    opacity: .025;
+    opacity: .022;
   }
 }
