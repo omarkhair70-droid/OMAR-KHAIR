@@ -1,24 +1,18 @@
-name: Fokhara Canonical Fragment QA
+name: Final Exhibition Release QA
 
 on:
   push:
     branches:
+      - main
       - exhibition/fokhara-canonical-fragment-20260923
-    paths:
-      - "app/fokhara/**"
-      - "components/rooms/fokhara/**"
-      - "components/source/fokhara/**"
-      - "lib/source/fokhara/**"
-      - "public/exhibition/fokhara/**"
-      - "components/ExhibitionShell.tsx"
-      - "app/globals.css"
-      - "scripts/qa-fokhara-fragment.mjs"
-      - ".github/workflows/fokhara-fragment-qa.yml"
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  visual-qa:
+  final-release-qa:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
 
     steps:
       - name: Checkout
@@ -55,15 +49,15 @@ jobs:
           cat /tmp/omar-khair-next.log
           exit 1
 
-      - name: Run Fokhara fragment browser QA
+      - name: Run final exhibition browser QA
         env:
           BASE_URL: http://127.0.0.1:3000
-        run: node scripts/qa-fokhara-fragment.mjs
+        run: node scripts/qa-final-exhibition.mjs
 
-      - name: Upload QA evidence
+      - name: Upload final exhibition evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fokhara-fragment-qa
-          path: artifacts/fokhara-fragment-qa
+          name: final-exhibition-qa
+          path: artifacts/final-exhibition-qa
           if-no-files-found: error
