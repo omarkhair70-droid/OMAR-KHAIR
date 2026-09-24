@@ -183,10 +183,12 @@ try {
     await page.waitForURL(baseUrl + "/", { timeout: 5000 });
     report.desktop.reenterRoute = new URL(page.url()).pathname;
 
-    const fokhara = await page.goto(baseUrl + "/fokhara", {
+    const retiredRoutePage = await context.newPage();
+    const fokhara = await retiredRoutePage.goto(baseUrl + "/fokhara", {
       waitUntil: "domcontentloaded",
     });
     report.desktop.fokharaStatus = fokhara?.status() ?? 0;
+    await retiredRoutePage.close();
 
     await context.close();
   }
