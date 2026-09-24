@@ -1,0 +1,53 @@
+{
+  "title": "OMAR KHAIR — SELECTED WORKS",
+  "year": 2026,
+  "sourceCommit": "38c5907ba9ba9e8da4555378d6c9237a3ec06cda",
+  "productionUrl": "https://omar-khair.vercel.app/",
+  "files": [
+    {
+      "file": "01-wall-of-eyes.png",
+      "caption": "WALL OF EYES — exhibition entrance / procedural witness field.",
+      "recommendedUse": "cover / lead image"
+    },
+    {
+      "file": "02-first-contact-object.png",
+      "caption": "FIRST CONTACT — the encounter begins with object, distance and signal.",
+      "recommendedUse": "process / sequence"
+    },
+    {
+      "file": "03-first-contact-third.png",
+      "caption": "FIRST CONTACT — the third state formed through interaction.",
+      "recommendedUse": "sequence / detail"
+    },
+    {
+      "file": "04-seraph-the-body.png",
+      "caption": "SERAPH / THE BODY — canonical responsive digital body inside the exhibition.",
+      "recommendedUse": "hero / key artwork image"
+    },
+    {
+      "file": "05-afterimage.png",
+      "caption": "FINAL TRACE — the remembered SERAPH body persists after disappearance.",
+      "recommendedUse": "hero / ending"
+    },
+    {
+      "file": "06-end-state.png",
+      "caption": "OMAR KHAIR — SELECTED WORKS / final exhibition state.",
+      "recommendedUse": "closing image"
+    },
+    {
+      "file": "07-mobile-wall-of-eyes.png",
+      "caption": "WALL OF EYES — mobile exhibition view.",
+      "recommendedUse": "responsive documentation"
+    },
+    {
+      "file": "08-mobile-seraph.png",
+      "caption": "SERAPH / THE BODY — mobile exhibition view.",
+      "recommendedUse": "responsive documentation"
+    },
+    {
+      "file": "selected-works-walkthrough.webm",
+      "caption": "Silent documentation walkthrough of the final exhibition sequence.",
+      "recommendedUse": "submission / documentation video"
+    }
+  ]
+}
