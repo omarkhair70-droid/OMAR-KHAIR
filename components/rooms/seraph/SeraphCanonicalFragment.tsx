@@ -73,7 +73,7 @@ export default function SeraphCanonicalFragment() {
     setLeaving(true);
 
     timerRef.current = window.setTimeout(() => {
-      router.push("/fokhara");
+      router.push("/afterimage");
     }, 900);
   };
 

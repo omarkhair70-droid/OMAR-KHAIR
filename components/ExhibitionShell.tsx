@@ -12,6 +12,13 @@ export default function ExhibitionShell() {
   const dialogRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const { soundMode, toggleSound, visitedRooms } = useExhibition();
+  const afterimage = pathname.startsWith("/afterimage");
+
+  useEffect(() => {
+    const openIndex = () => setIndexOpen(true);
+    window.addEventListener("omar:open-index", openIndex);
+    return () => window.removeEventListener("omar:open-index", openIndex);
+  }, []);
 
   useEffect(() => {
     if (!indexOpen) return;
@@ -50,25 +57,32 @@ export default function ExhibitionShell() {
   }, [indexOpen]);
 
   const currentSlug = pathname === "/" ? "" : pathname.slice(1).split("/")[0];
-  const darkShell = pathname === "/" || pathname.startsWith("/seraph");
+  const darkShell =
+    pathname === "/" ||
+    pathname.startsWith("/seraph") ||
+    afterimage;
 
   return (
     <>
-      <header className={`exhibition-shell${pathname === "/" ? " exhibition-shell--opening" : ""}${darkShell ? " exhibition-shell--dark" : ""}`}>
-        <Link href="/" className="exhibition-mark" aria-label="Omar Khair — exhibition entrance">
-          OMAR KHAIR
-        </Link>
+      <header className={`exhibition-shell${pathname === "/" ? " exhibition-shell--opening" : ""}${darkShell ? " exhibition-shell--dark" : ""}${afterimage ? " exhibition-shell--afterimage" : ""}`}>
+        {!afterimage ? (
+          <Link href="/" className="exhibition-mark" aria-label="Omar Khair — exhibition entrance">
+            OMAR KHAIR
+          </Link>
+        ) : null}
 
-        <div className="exhibition-shell__actions">
-          {soundMode !== "undecided" ? (
-            <button className="shell-action" type="button" onClick={() => void toggleSound()}>
-              SOUND {soundMode === "on" ? "ON" : "OFF"}
+        {!afterimage ? (
+          <div className="exhibition-shell__actions">
+            {soundMode !== "undecided" ? (
+              <button className="shell-action" type="button" onClick={() => void toggleSound()}>
+                SOUND {soundMode === "on" ? "ON" : "OFF"}
+              </button>
+            ) : null}
+            <button className="shell-action" type="button" onClick={() => setIndexOpen(true)}>
+              INDEX
             </button>
-          ) : null}
-          <button className="shell-action" type="button" onClick={() => setIndexOpen(true)}>
-            INDEX
-          </button>
-        </div>
+          </div>
+        ) : null}
       </header>
 
       {indexOpen ? (
