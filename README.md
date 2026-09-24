@@ -52,3 +52,18 @@ Public-facing exhibition / artist text:
 ## Source-of-truth note
 
 Earlier curation and architecture documents preserve the development history of the exhibition, including the former seven-work plan. They are historical unless explicitly reaffirmed by the final closure document above.
+
+
+## Documentation / submissions
+
+Final exhibition documentation:
+`docs/OMAR_KHAIR_SELECTED_WORKS_DOCUMENTATION_2026-09-24.md`
+
+Submission / portfolio / exhibition application kit:
+`docs/OMAR_KHAIR_SELECTED_WORKS_SUBMISSION_KIT_2026-09-24.md`
+
+Media manifest:
+`docs/OMAR_KHAIR_SELECTED_WORKS_MEDIA_MANIFEST_2026-09-24.md`
+
+Generated documentation media:
+`public/documentation/selected-works/`

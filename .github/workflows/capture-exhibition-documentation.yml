@@ -1,0 +1,80 @@
+name: Capture Exhibition Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/capture-exhibition-documentation.mjs"
+      - ".github/workflows/capture-exhibition-documentation.yml"
+      - "docs/OMAR_KHAIR_SELECTED_WORKS_DOCUMENTATION_2026-09-24.md"
+      - "docs/OMAR_KHAIR_SELECTED_WORKS_SUBMISSION_KIT_2026-09-24.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install application
+        run: npm install --no-audit --no-fund
+
+      - name: Build application
+        run: npm run build
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start production server
+        run: |
+          npm start -- -H 127.0.0.1 > /tmp/omar-khair-next.log 2>&1 &
+          for i in {1..60}; do
+            if curl -fsS http://127.0.0.1:3000/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/omar-khair-next.log
+          exit 1
+
+      - name: Capture documentation media
+        env:
+          BASE_URL: http://127.0.0.1:3000
+        run: node scripts/capture-exhibition-documentation.mjs
+
+      - name: Commit documentation media
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/documentation/selected-works
+          if git diff --cached --quiet; then
+            echo "DOCUMENTATION_MEDIA=UNCHANGED"
+            exit 0
+          fi
+          git commit -m "Add final exhibition documentation media [skip ci]"
+          git push origin HEAD:main
+
+      - name: Upload documentation package
+        uses: actions/upload-artifact@v4
+        with:
+          name: selected-works-documentation-media
+          path: public/documentation/selected-works
+          if-no-files-found: error
