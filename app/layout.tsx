@@ -16,14 +16,27 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://omar-khair.vercel.app"),
   title: {
     default: "Omar Khair — Selected Works",
     template: "%s — Omar Khair"
   },
-  description: "Selected works / living exhibition by Omar Khair.",
+  description:
+    "A browser-based exhibition by Omar Khair in which gaze becomes contact, contact becomes presence, and presence leaves a trace.",
+  alternates: {
+    canonical: "/"
+  },
+  openGraph: {
+    title: "Omar Khair — Selected Works",
+    description:
+      "A browser-based exhibition in which gaze becomes contact, contact becomes presence, and presence leaves a trace.",
+    url: "/",
+    siteName: "Omar Khair — Selected Works",
+    type: "website"
+  },
   robots: {
-    index: false,
-    follow: false
+    index: true,
+    follow: true
   }
 };
 
